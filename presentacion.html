@@ -385,6 +385,108 @@ nav {
   margin-top: 24px;
 }
 
+.module-graph {
+  margin-top: 48px;
+  padding: 28px;
+  border: 1px solid var(--border);
+  background: var(--cream);
+  display: grid;
+  grid-template-columns: 1fr 1.1fr 1.35fr 1fr;
+  gap: 18px;
+  align-items: stretch;
+}
+.mg-node {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  min-height: 132px;
+  position: relative;
+}
+.mg-node::after {
+  content: '›';
+  position: absolute;
+  right: -17px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--blue);
+  font-size: 28px;
+  font-weight: 300;
+  line-height: 1;
+}
+.mg-node:last-child::after { display: none; }
+.mg-code {
+  font-family: monospace;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: var(--blue);
+  margin-bottom: 10px;
+}
+.mg-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+.mg-desc {
+  font-size: 12px;
+  color: var(--mid);
+  line-height: 1.55;
+}
+.mg-node.processing {
+  padding: 0;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+.mg-band {
+  padding: 14px 18px;
+  background: var(--navy);
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.mg-chain {
+  display: grid;
+  grid-template-columns: 1fr 24px 1fr 24px 1fr;
+  gap: 0;
+  align-items: center;
+  padding: 18px;
+}
+.mg-step {
+  min-height: 92px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  background: var(--white);
+}
+.mg-step .mg-code { margin-bottom: 6px; color: var(--sage); }
+.mg-step .mg-title { font-size: 13px; margin-bottom: 6px; }
+.mg-step .mg-desc { font-size: 11px; }
+.mg-arrow {
+  color: var(--blue);
+  text-align: center;
+  font-size: 22px;
+  line-height: 1;
+}
+.mg-output {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--border);
+  background: rgba(250,250,247,0.72);
+}
+.mg-output span {
+  padding: 12px 18px;
+  border-right: 1px solid var(--border);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--mid);
+}
+.mg-output span:last-child { border-right: none; }
+
 /* ── ARCH TIMELINE HORIZONTAL ──────────── */
 .arch-tl-h {
   margin-top: 48px;
@@ -836,6 +938,17 @@ footer {
   .prop-metric .m-lbl { font-size: 15px; }
 
   .arch-intro { font-size: 22px; }
+  .module-graph { padding: 36px; gap: 24px; }
+  .mg-node { padding: 26px; min-height: 168px; }
+  .mg-code { font-size: 14px; }
+  .mg-title { font-size: 22px; }
+  .mg-desc { font-size: 16px; }
+  .mg-band { font-size: 14px; padding: 18px 24px; }
+  .mg-chain { padding: 24px; grid-template-columns: 1fr 32px 1fr 32px 1fr; }
+  .mg-step { min-height: 120px; padding: 18px; }
+  .mg-step .mg-title { font-size: 17px; }
+  .mg-step .mg-desc { font-size: 14px; }
+  .mg-output span { font-size: 14px; padding: 16px 24px; }
   .tlh-title { font-size: 22px; }
   .tlh-desc { font-size: 16px; }
   .tlh-chip { font-size: 14px; padding: 5px 14px; }
@@ -873,6 +986,13 @@ footer {
   .reto-items { grid-template-columns: 1fr; }
   .propuesta-body { grid-template-columns: 1fr; gap: 32px; }
   .prop-metrics { grid-template-columns: 1fr 1fr; }
+  .module-graph { grid-template-columns: 1fr; }
+  .mg-node::after { display: none; }
+  .mg-chain { grid-template-columns: 1fr; gap: 10px; }
+  .mg-arrow { transform: rotate(90deg); }
+  .mg-output { grid-template-columns: 1fr; }
+  .mg-output span { border-right: none; border-bottom: 1px solid var(--border); }
+  .mg-output span:last-child { border-bottom: none; }
   .arch-tl-h::before { display: none; }
   .tlh-steps { grid-template-columns: 1fr 1fr; gap: 24px; }
   .tlh-flow { display: none; }
@@ -912,8 +1032,9 @@ footer {
       <h1 class="hero-h1">
         Extracción<br>
         <em>inteligente</em><br>
-        de documentos<br>
-        de agenda urbana
+        de datos referidos<br>
+        a documentos de la<br>
+        agenda urbana
       </h1>
       <p class="hero-desc">
         Una prueba de concepto que convierte documentación no estructurada
@@ -1065,6 +1186,51 @@ footer {
     e integrarse con los sistemas tecnológicos existentes del Ministerio.
   </p>
 
+  <div class="module-graph reveal d1">
+    <div class="mg-node">
+      <div class="mg-code">MUI</div>
+      <div class="mg-title">Interfaz de usuario</div>
+      <p class="mg-desc">Carga de documentos, revisión de datos y asistente IA lateral para consulta contextual.</p>
+    </div>
+    <div class="mg-node">
+      <div class="mg-code">MAP</div>
+      <div class="mg-title">API y orquestación</div>
+      <p class="mg-desc">Valida peticiones, coordina módulos y expone servicios integrables mediante FastAPI.</p>
+    </div>
+    <div class="mg-node processing">
+      <div class="mg-band">Cadena de procesamiento</div>
+      <div class="mg-chain">
+        <div class="mg-step">
+          <div class="mg-code">MCD</div>
+          <div class="mg-title">Carga documental</div>
+          <p class="mg-desc">Normaliza PDF, DOCX y escaneados.</p>
+        </div>
+        <div class="mg-arrow">›</div>
+        <div class="mg-step">
+          <div class="mg-code">MEI</div>
+          <div class="mg-title">Extracción de datos IA</div>
+          <p class="mg-desc">Obtiene campos estructurados y trazables.</p>
+        </div>
+        <div class="mg-arrow">›</div>
+        <div class="mg-step">
+          <div class="mg-code">MVD</div>
+          <div class="mg-title">Validación</div>
+          <p class="mg-desc">Revisión humana y contraste con fuente.</p>
+        </div>
+      </div>
+      <div class="mg-output">
+        <span>Texto normalizado</span>
+        <span>Datos extraídos</span>
+        <span>Datos validados</span>
+      </div>
+    </div>
+    <div class="mg-node">
+      <div class="mg-code">MAL</div>
+      <div class="mg-title">Almacenamiento</div>
+      <p class="mg-desc">PostgreSQL y pgvector conservan datos, embeddings y trazabilidad a página y bloque.</p>
+    </div>
+  </div>
+
   <div class="arch-tl-h reveal d1">
     <div class="tlh-steps">
 
@@ -1116,7 +1282,7 @@ footer {
           </div>
           <div class="tlh-sub">
             <div class="tlh-sub-code">MEI</div>
-            <div class="tlh-sub-name">Extracción IA</div>
+            <div class="tlh-sub-name">Extracción de datos IA</div>
             <div class="tlh-sub-detail">Pipeline de 6 capas. LLM ALIA-40b, prompts ad-hoc, embeddings EmbeddingGemma.</div>
           </div>
           <div class="tlh-sub">
@@ -1155,7 +1321,7 @@ footer {
   <div class="modules-tabs reveal">
     <div class="tab-bar">
       <button class="tab-btn active" data-tab="mcd">MCD · Carga</button>
-      <button class="tab-btn" data-tab="mei">MEI · Extracción IA</button>
+      <button class="tab-btn" data-tab="mei">MEI · Extracción de datos IA</button>
       <button class="tab-btn" data-tab="mvd">MVD · Validación</button>
       <button class="tab-btn" data-tab="map">MAP · API</button>
       <button class="tab-btn" data-tab="mal">MAL · Datos</button>
@@ -1199,8 +1365,8 @@ footer {
       <div class="tab-panel" id="tab-mei">
         <div class="panel-left">
           <span class="panel-code">MEI</span>
-          <h3>Módulo de Extracción y Enriquecimiento</h3>
-          <p>El núcleo de inteligencia del sistema. Orquesta el procesamiento semántico mediante un pipeline de seis capas especializadas. Utiliza análisis jerárquico por bloques para documentos extensos.</p>
+          <h3>Módulo de Extracción de Datos y Enriquecimiento</h3>
+          <p>El núcleo de inteligencia del sistema. Orquesta la extracción semántica de datos mediante un pipeline de seis capas especializadas. Utiliza análisis jerárquico por bloques para documentos extensos.</p>
           <div class="feature-grid">
             <div class="feature-row">
               <div class="f-text"><strong>Fragmentación inteligente</strong>Bloques de ~2.000 tokens con solapamiento de 250 palabras para preservar coherencia</div>
@@ -1227,7 +1393,7 @@ footer {
               <div class="capa-num">II</div>
               <div class="capa-body">
                 <div class="capa-title">LLM · ALIA-40b-instruct</div>
-                <div class="capa-desc">Modelo open source para extracción semántica final</div>
+                <div class="capa-desc">Modelo open source para extracción semántica final de datos</div>
               </div>
             </div>
             <div class="capa-item">
