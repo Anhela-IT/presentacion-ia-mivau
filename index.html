@@ -387,105 +387,32 @@ nav {
 
 .module-graph {
   margin-top: 48px;
-  padding: 28px;
+  padding: 24px;
   border: 1px solid var(--border);
   background: var(--cream);
-  display: grid;
-  grid-template-columns: 1fr 1.1fr 1.35fr 1fr;
-  gap: 18px;
-  align-items: stretch;
+  overflow-x: auto;
 }
-.mg-node {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 20px;
-  min-height: 132px;
-  position: relative;
+.module-graph svg {
+  display: block;
+  width: 100%;
+  min-width: 980px;
+  height: auto;
 }
-.mg-node::after {
-  content: '›';
-  position: absolute;
-  right: -17px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--blue);
-  font-size: 28px;
-  font-weight: 300;
-  line-height: 1;
-}
-.mg-node:last-child::after { display: none; }
-.mg-code {
-  font-family: monospace;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  color: var(--blue);
-  margin-bottom: 10px;
-}
-.mg-title {
-  font-size: 16px;
-  font-weight: 800;
-  color: var(--navy);
-  line-height: 1.2;
-  margin-bottom: 8px;
-}
-.mg-desc {
-  font-size: 12px;
-  color: var(--mid);
-  line-height: 1.55;
-}
-.mg-node.processing {
-  padding: 0;
-  display: grid;
-  grid-template-rows: auto 1fr;
-}
-.mg-band {
-  padding: 14px 18px;
-  background: var(--navy);
-  color: var(--white);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-.mg-chain {
-  display: grid;
-  grid-template-columns: 1fr 24px 1fr 24px 1fr;
-  gap: 0;
-  align-items: center;
-  padding: 18px;
-}
-.mg-step {
-  min-height: 92px;
-  padding: 14px;
-  border: 1px solid var(--border);
-  background: var(--white);
-}
-.mg-step .mg-code { margin-bottom: 6px; color: var(--sage); }
-.mg-step .mg-title { font-size: 13px; margin-bottom: 6px; }
-.mg-step .mg-desc { font-size: 11px; }
-.mg-arrow {
-  color: var(--blue);
-  text-align: center;
-  font-size: 22px;
-  line-height: 1;
-}
-.mg-output {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid var(--border);
-  background: rgba(250,250,247,0.72);
-}
-.mg-output span {
-  padding: 12px 18px;
-  border-right: 1px solid var(--border);
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--mid);
-}
-.mg-output span:last-child { border-right: none; }
+.mg-box { fill: var(--white); stroke: var(--border); stroke-width: 1.2; }
+.mg-box-strong { fill: #F7F9FF; stroke: rgba(18,70,255,0.38); stroke-width: 1.4; }
+.mg-group { fill: rgba(10,22,40,0.035); stroke: var(--navy); stroke-width: 1.2; }
+.mg-group-label { fill: var(--navy); font-size: 12px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+.mg-code { fill: var(--blue); font-family: monospace; font-size: 13px; font-weight: 800; letter-spacing: 0.12em; }
+.mg-title { fill: var(--navy); font-size: 18px; font-weight: 800; }
+.mg-copy { fill: var(--mid); font-size: 13px; }
+.mg-small { fill: var(--mid); font-size: 12px; }
+.mg-line { fill: none; stroke: var(--blue); stroke-width: 2; }
+.mg-line-soft { fill: none; stroke: var(--border); stroke-width: 1.4; }
+.mg-output-pill { fill: var(--white); stroke: var(--border); stroke-width: 1; }
+.mg-output-text { fill: var(--mid); font-size: 12px; font-weight: 700; }
+.mg-dot { fill: var(--coral); }
+.mg-dot-blue { fill: var(--blue); }
+.mg-dot-sage { fill: var(--sage); }
 
 /* ── ARCH TIMELINE HORIZONTAL ──────────── */
 .arch-tl-h {
@@ -938,17 +865,7 @@ footer {
   .prop-metric .m-lbl { font-size: 15px; }
 
   .arch-intro { font-size: 22px; }
-  .module-graph { padding: 36px; gap: 24px; }
-  .mg-node { padding: 26px; min-height: 168px; }
-  .mg-code { font-size: 14px; }
-  .mg-title { font-size: 22px; }
-  .mg-desc { font-size: 16px; }
-  .mg-band { font-size: 14px; padding: 18px 24px; }
-  .mg-chain { padding: 24px; grid-template-columns: 1fr 32px 1fr 32px 1fr; }
-  .mg-step { min-height: 120px; padding: 18px; }
-  .mg-step .mg-title { font-size: 17px; }
-  .mg-step .mg-desc { font-size: 14px; }
-  .mg-output span { font-size: 14px; padding: 16px 24px; }
+  .module-graph { padding: 36px; }
   .tlh-title { font-size: 22px; }
   .tlh-desc { font-size: 16px; }
   .tlh-chip { font-size: 14px; padding: 5px 14px; }
@@ -986,13 +903,7 @@ footer {
   .reto-items { grid-template-columns: 1fr; }
   .propuesta-body { grid-template-columns: 1fr; gap: 32px; }
   .prop-metrics { grid-template-columns: 1fr 1fr; }
-  .module-graph { grid-template-columns: 1fr; }
-  .mg-node::after { display: none; }
-  .mg-chain { grid-template-columns: 1fr; gap: 10px; }
-  .mg-arrow { transform: rotate(90deg); }
-  .mg-output { grid-template-columns: 1fr; }
-  .mg-output span { border-right: none; border-bottom: 1px solid var(--border); }
-  .mg-output span:last-child { border-bottom: none; }
+  .module-graph { padding: 16px; }
   .arch-tl-h::before { display: none; }
   .tlh-steps { grid-template-columns: 1fr 1fr; gap: 24px; }
   .tlh-flow { display: none; }
@@ -1187,48 +1098,78 @@ footer {
   </p>
 
   <div class="module-graph reveal d1">
-    <div class="mg-node">
-      <div class="mg-code">MUI</div>
-      <div class="mg-title">Interfaz de usuario</div>
-      <p class="mg-desc">Carga de documentos, revisión de datos y asistente IA lateral para consulta contextual.</p>
-    </div>
-    <div class="mg-node">
-      <div class="mg-code">MAP</div>
-      <div class="mg-title">API y orquestación</div>
-      <p class="mg-desc">Valida peticiones, coordina módulos y expone servicios integrables mediante FastAPI.</p>
-    </div>
-    <div class="mg-node processing">
-      <div class="mg-band">Cadena de procesamiento</div>
-      <div class="mg-chain">
-        <div class="mg-step">
-          <div class="mg-code">MCD</div>
-          <div class="mg-title">Carga documental</div>
-          <p class="mg-desc">Normaliza PDF, DOCX y escaneados.</p>
-        </div>
-        <div class="mg-arrow">›</div>
-        <div class="mg-step">
-          <div class="mg-code">MEI</div>
-          <div class="mg-title">Extracción de datos IA</div>
-          <p class="mg-desc">Obtiene campos estructurados y trazables.</p>
-        </div>
-        <div class="mg-arrow">›</div>
-        <div class="mg-step">
-          <div class="mg-code">MVD</div>
-          <div class="mg-title">Validación</div>
-          <p class="mg-desc">Revisión humana y contraste con fuente.</p>
-        </div>
-      </div>
-      <div class="mg-output">
-        <span>Texto normalizado</span>
-        <span>Datos extraídos</span>
-        <span>Datos validados</span>
-      </div>
-    </div>
-    <div class="mg-node">
-      <div class="mg-code">MAL</div>
-      <div class="mg-title">Almacenamiento</div>
-      <p class="mg-desc">PostgreSQL y pgvector conservan datos, embeddings y trazabilidad a página y bloque.</p>
-    </div>
+    <svg viewBox="0 0 1180 420" role="img" aria-label="Arquitectura de módulos: MUI, MAP, MCD, MEI, MVD y MAL conectados por flujo de datos">
+      <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+          <path d="M0,0 L10,5 L0,10 Z" fill="#1246FF"></path>
+        </marker>
+        <marker id="arrowSoft" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+          <path d="M0,0 L10,5 L0,10 Z" fill="#D8D4CC"></path>
+        </marker>
+      </defs>
+
+      <path class="mg-line-soft" d="M70 346 H1070" marker-end="url(#arrowSoft)"></path>
+      <text class="mg-output-text" x="70" y="372">Documentos de entrada</text>
+      <text class="mg-output-text" x="432" y="372">Datos extraídos y trazables</text>
+      <text class="mg-output-text" x="910" y="372">Datos validados y consultables</text>
+
+      <rect class="mg-box" x="40" y="94" width="180" height="128" rx="8"></rect>
+      <circle class="mg-dot" cx="64" cy="120" r="5"></circle>
+      <text class="mg-code" x="82" y="125">MUI</text>
+      <text class="mg-title" x="64" y="158">Interfaz</text>
+      <text class="mg-copy" x="64" y="184">Carga, revisión</text>
+      <text class="mg-copy" x="64" y="204">y asistente IA</text>
+
+      <path class="mg-line" d="M220 158 H294" marker-end="url(#arrow)"></path>
+
+      <rect class="mg-box" x="305" y="94" width="180" height="128" rx="8"></rect>
+      <circle class="mg-dot-blue" cx="329" cy="120" r="5"></circle>
+      <text class="mg-code" x="347" y="125">MAP</text>
+      <text class="mg-title" x="329" y="158">API REST</text>
+      <text class="mg-copy" x="329" y="184">Validación y</text>
+      <text class="mg-copy" x="329" y="204">orquestación</text>
+
+      <path class="mg-line" d="M485 158 H558" marker-end="url(#arrow)"></path>
+
+      <rect class="mg-group" x="570" y="48" width="390" height="220" rx="12"></rect>
+      <text class="mg-group-label" x="594" y="78">Cadena de procesamiento</text>
+
+      <rect class="mg-box" x="594" y="108" width="96" height="94" rx="8"></rect>
+      <text class="mg-code" x="616" y="136">MCD</text>
+      <text class="mg-small" x="614" y="162">Carga</text>
+      <text class="mg-small" x="610" y="182">documental</text>
+
+      <path class="mg-line" d="M690 155 H732" marker-end="url(#arrow)"></path>
+
+      <rect class="mg-box-strong" x="742" y="100" width="120" height="110" rx="8"></rect>
+      <text class="mg-code" x="786" y="130">MEI</text>
+      <text class="mg-small" x="762" y="158">Extracción</text>
+      <text class="mg-small" x="768" y="178">de datos IA</text>
+
+      <path class="mg-line" d="M862 155 H902" marker-end="url(#arrow)"></path>
+
+      <rect class="mg-box" x="912" y="108" width="96" height="94" rx="8"></rect>
+      <text class="mg-code" x="934" y="136">MVD</text>
+      <text class="mg-small" x="934" y="162">Validación</text>
+      <text class="mg-small" x="928" y="182">humana</text>
+
+      <path class="mg-line" d="M960 202 V294 H812" marker-end="url(#arrow)"></path>
+      <rect class="mg-output-pill" x="660" y="286" width="150" height="36" rx="18"></rect>
+      <text class="mg-output-text" x="684" y="309">Datos validados</text>
+
+      <path class="mg-line" d="M960 158 H1036" marker-end="url(#arrow)"></path>
+
+      <rect class="mg-box" x="1048" y="94" width="92" height="128" rx="8"></rect>
+      <circle class="mg-dot-sage" cx="1070" cy="120" r="5"></circle>
+      <text class="mg-code" x="1085" y="125">MAL</text>
+      <text class="mg-title" x="1070" y="158">Datos</text>
+      <text class="mg-copy" x="1070" y="184">PostgreSQL</text>
+      <text class="mg-copy" x="1070" y="204">pgvector</text>
+
+      <path class="mg-line-soft" d="M802 210 V254" marker-end="url(#arrowSoft)"></path>
+      <rect class="mg-output-pill" x="710" y="240" width="184" height="36" rx="18"></rect>
+      <text class="mg-output-text" x="735" y="263">Campos estructurados</text>
+    </svg>
   </div>
 
   <div class="arch-tl-h reveal d1">
