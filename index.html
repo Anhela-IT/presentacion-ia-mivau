@@ -1,6 +1,5 @@
 ﻿<!DOCTYPE html>
 <html lang="es">
-<!-- deploy: 2026-06-08 -->
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -386,34 +385,14 @@ nav {
   margin-top: 24px;
 }
 
-.module-graph {
+/* ── ARCH DIAGRAM (D3) ─────────────────── */
+.arch-diagram {
   margin-top: 48px;
-  padding: 24px;
   border: 1px solid var(--border);
-  background: var(--cream);
-  overflow-x: auto;
+  background: var(--white);
+  padding: 28px 32px 32px;
+  overflow: hidden;
 }
-.module-graph svg {
-  display: block;
-  width: 100%;
-  min-width: 980px;
-  height: auto;
-}
-.mg-box { fill: var(--white); stroke: var(--border); stroke-width: 1.2; }
-.mg-box-strong { fill: #F7F9FF; stroke: rgba(18,70,255,0.38); stroke-width: 1.4; }
-.mg-group { fill: rgba(10,22,40,0.035); stroke: var(--navy); stroke-width: 1.2; }
-.mg-group-label { fill: var(--navy); font-size: 12px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
-.mg-code { fill: var(--blue); font-family: monospace; font-size: 13px; font-weight: 800; letter-spacing: 0.12em; }
-.mg-title { fill: var(--navy); font-size: 18px; font-weight: 800; }
-.mg-copy { fill: var(--mid); font-size: 13px; }
-.mg-small { fill: var(--mid); font-size: 12px; }
-.mg-line { fill: none; stroke: var(--blue); stroke-width: 2; }
-.mg-line-soft { fill: none; stroke: var(--border); stroke-width: 1.4; }
-.mg-output-pill { fill: var(--white); stroke: var(--border); stroke-width: 1; }
-.mg-output-text { fill: var(--mid); font-size: 12px; font-weight: 700; }
-.mg-dot { fill: var(--coral); }
-.mg-dot-blue { fill: var(--blue); }
-.mg-dot-sage { fill: var(--sage); }
 
 /* ── ARCH TIMELINE HORIZONTAL ──────────── */
 .arch-tl-h {
@@ -866,7 +845,7 @@ footer {
   .prop-metric .m-lbl { font-size: 15px; }
 
   .arch-intro { font-size: 22px; }
-  .module-graph { padding: 36px; }
+  #arch-d3 svg { height: 280px; }
   .tlh-title { font-size: 22px; }
   .tlh-desc { font-size: 16px; }
   .tlh-chip { font-size: 14px; padding: 5px 14px; }
@@ -1098,79 +1077,8 @@ footer {
     e integrarse con los sistemas tecnológicos existentes del Ministerio.
   </p>
 
-  <div class="module-graph reveal d1">
-    <svg viewBox="0 0 1180 420" role="img" aria-label="Arquitectura de módulos: MUI, MAP, MCD, MEI, MVD y MAL conectados por flujo de datos">
-      <defs>
-        <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
-          <path d="M0,0 L10,5 L0,10 Z" fill="#1246FF"></path>
-        </marker>
-        <marker id="arrowSoft" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
-          <path d="M0,0 L10,5 L0,10 Z" fill="#D8D4CC"></path>
-        </marker>
-      </defs>
-
-      <path class="mg-line-soft" d="M70 346 H1070" marker-end="url(#arrowSoft)"></path>
-      <text class="mg-output-text" x="70" y="372">Documentos de entrada</text>
-      <text class="mg-output-text" x="432" y="372">Datos extraídos y trazables</text>
-      <text class="mg-output-text" x="910" y="372">Datos validados y consultables</text>
-
-      <rect class="mg-box" x="40" y="94" width="180" height="128" rx="8"></rect>
-      <circle class="mg-dot" cx="64" cy="120" r="5"></circle>
-      <text class="mg-code" x="82" y="125">MUI</text>
-      <text class="mg-title" x="64" y="158">Interfaz</text>
-      <text class="mg-copy" x="64" y="184">Carga, revisión</text>
-      <text class="mg-copy" x="64" y="204">y asistente IA</text>
-
-      <path class="mg-line" d="M220 158 H294" marker-end="url(#arrow)"></path>
-
-      <rect class="mg-box" x="305" y="94" width="180" height="128" rx="8"></rect>
-      <circle class="mg-dot-blue" cx="329" cy="120" r="5"></circle>
-      <text class="mg-code" x="347" y="125">MAP</text>
-      <text class="mg-title" x="329" y="158">API REST</text>
-      <text class="mg-copy" x="329" y="184">Validación y</text>
-      <text class="mg-copy" x="329" y="204">orquestación</text>
-
-      <path class="mg-line" d="M485 158 H558" marker-end="url(#arrow)"></path>
-
-      <rect class="mg-group" x="570" y="48" width="390" height="220" rx="12"></rect>
-      <text class="mg-group-label" x="594" y="78">Cadena de procesamiento</text>
-
-      <rect class="mg-box" x="594" y="108" width="96" height="94" rx="8"></rect>
-      <text class="mg-code" x="616" y="136">MCD</text>
-      <text class="mg-small" x="614" y="162">Carga</text>
-      <text class="mg-small" x="610" y="182">documental</text>
-
-      <path class="mg-line" d="M690 155 H732" marker-end="url(#arrow)"></path>
-
-      <rect class="mg-box-strong" x="742" y="100" width="120" height="110" rx="8"></rect>
-      <text class="mg-code" x="786" y="130">MEI</text>
-      <text class="mg-small" x="762" y="158">Extracción</text>
-      <text class="mg-small" x="768" y="178">de datos IA</text>
-
-      <path class="mg-line" d="M862 155 H902" marker-end="url(#arrow)"></path>
-
-      <rect class="mg-box" x="912" y="108" width="96" height="94" rx="8"></rect>
-      <text class="mg-code" x="934" y="136">MVD</text>
-      <text class="mg-small" x="934" y="162">Validación</text>
-      <text class="mg-small" x="928" y="182">humana</text>
-
-      <path class="mg-line" d="M960 202 V294 H812" marker-end="url(#arrow)"></path>
-      <rect class="mg-output-pill" x="660" y="286" width="150" height="36" rx="18"></rect>
-      <text class="mg-output-text" x="684" y="309">Datos validados</text>
-
-      <path class="mg-line" d="M960 158 H1036" marker-end="url(#arrow)"></path>
-
-      <rect class="mg-box" x="1048" y="94" width="92" height="128" rx="8"></rect>
-      <circle class="mg-dot-sage" cx="1070" cy="120" r="5"></circle>
-      <text class="mg-code" x="1085" y="125">MAL</text>
-      <text class="mg-title" x="1070" y="158">Datos</text>
-      <text class="mg-copy" x="1070" y="184">PostgreSQL</text>
-      <text class="mg-copy" x="1070" y="204">pgvector</text>
-
-      <path class="mg-line-soft" d="M802 210 V254" marker-end="url(#arrowSoft)"></path>
-      <rect class="mg-output-pill" x="710" y="240" width="184" height="36" rx="18"></rect>
-      <text class="mg-output-text" x="735" y="263">Campos estructurados</text>
-    </svg>
+  <div class="arch-diagram reveal d1">
+    <div id="arch-d3"></div>
   </div>
 
   <div class="arch-tl-h reveal d1">
@@ -1529,6 +1437,166 @@ footer {
   <div class="footer-meta">Propuesta técnica · Mayo 2026</div>
   <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Logotipo_del_Ministerio_de_Vivienda_y_Agenda_Urbana.svg" alt="MIVAU" height="30" style="object-fit:contain;">
 </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+<script>
+(function () {
+  // ── Layout: arco — MUI/MAP arriba, cadena abajo, MAL sube ──────────
+  // cy individual por nodo; curvas bezier en transiciones diagonales
+  var VW = 1016, VH = 235;
+
+  // Paleta: --white:#FAFAF7 --cream:#F2EFE9 --blue:#1246FF --coral:#FF4D2E
+  //         --sage:#3D6B5B --border:#D8D4CC --mid:#6B6B6B --navy:#0A1628
+  var nodes = [
+    { id:'MUI', cx:82,  cy:72,  w:138, h:92, code:'MUI', title:'Interfaz de usuario',  desc:'Carga y asistente IA integrado',     accent:'#FF4D2E', bg:'#FAFAF7',              codeColor:'#FF4D2E' },
+    { id:'MAP', cx:252, cy:72,  w:138, h:92, code:'MAP', title:'API REST',              desc:'Validación Pydantic · orquestación', accent:'#1246FF', bg:'#FAFAF7',              codeColor:'#1246FF' },
+    { id:'MCD', cx:452, cy:168, w:118, h:72, code:'MCD', title:'Carga documental',      desc:'PDF · DOCX · OCR',                   accent:'#D8D4CC', bg:'#FAFAF7', inner:true,  codeColor:'#6B6B6B' },
+    { id:'MEI', cx:590, cy:168, w:118, h:72, code:'MEI', title:'Extracción IA',         desc:'ALIA-40b · embeddings',              accent:'#0A1628', bg:'#FAFAF7', inner:true, codeColor:'#0A1628' },
+    { id:'MVD', cx:728, cy:168, w:118, h:72, code:'MVD', title:'Validación humana',     desc:'Human-in-loop · RAG',                accent:'#D8D4CC', bg:'#FAFAF7', inner:true,  codeColor:'#6B6B6B' },
+    { id:'MAL', cx:934, cy:72,  w:138, h:92, code:'MAL', title:'Almacenamiento',        desc:'PostgreSQL · pgvector',              accent:'#3D6B5B', bg:'#FAFAF7', codeColor:'#3D6B5B' },
+  ];
+
+  var edges = [
+    { s:'MUI', t:'MAP', label:'HTTP'   },
+    { s:'MAP', t:'MCD', label:'DOCS'   },
+    { s:'MCD', t:'MEI', label:'TEXTO'  },
+    { s:'MEI', t:'MVD', label:'CAMPOS' },
+    { s:'MVD', t:'MAL', label:'DATOS'  },
+  ];
+
+  var inner = nodes.filter(function(n){ return n.inner; });
+  var clX = inner[0].cx - inner[0].w/2 - 14;
+  var clR = inner[inner.length-1].cx + inner[inner.length-1].w/2 + 14;
+  var iCY = inner[0].cy;
+  var clY = iCY - inner[0].h/2 - 28;
+  var clB = iCY + inner[0].h/2 + 12;
+
+  var nMap = {};
+  nodes.forEach(function(n){ nMap[n.id] = n; });
+
+  // ── SVG ────────────────────────────────────────────────────────────
+  var svg = d3.select('#arch-d3')
+    .append('svg')
+    .attr('viewBox', '0 0 ' + VW + ' ' + VH)
+    .attr('width', '100%')
+    .style('display', 'block');
+
+  var defs = svg.append('defs');
+
+  // Sombra suave
+  var filt = defs.append('filter').attr('id','nsh').attr('x','-20%').attr('y','-30%').attr('width','140%').attr('height','160%');
+  filt.append('feDropShadow').attr('dx',0).attr('dy',2).attr('stdDeviation',4).attr('flood-color','#000').attr('flood-opacity',0.07);
+
+  // Marcador de flecha — orient:auto-start-reverse sigue la tangente
+  defs.append('marker')
+    .attr('id','arr').attr('viewBox','0 0 10 10')
+    .attr('refX',9).attr('refY',5)
+    .attr('markerWidth',6).attr('markerHeight',6)
+    .attr('orient','auto')
+    .append('path').attr('d','M0,0 L10,5 L0,10 z').attr('fill','#1246FF');
+
+  // ── Cluster ────────────────────────────────────────────────────────
+  svg.append('rect')
+    .attr('x', clX).attr('y', clY)
+    .attr('width', clR - clX).attr('height', clB - clY)
+    .attr('rx', 10)
+    .attr('fill', 'rgba(10,22,40,0.025)')
+    .attr('stroke', '#0A1628').attr('stroke-width', 1).attr('stroke-dasharray','4 3');
+
+  svg.append('text')
+    .attr('x', (clX + clR) / 2).attr('y', clY + 17)
+    .attr('text-anchor','middle')
+    .attr('font-family','"Inter",system-ui,sans-serif')
+    .attr('font-size',8.5).attr('font-weight',800)
+    .attr('letter-spacing','0.13em').attr('fill','#0A1628').attr('opacity',0.5)
+    .text('CADENA DE PROCESAMIENTO');
+
+  // ── Pasada 1: trazos de aristas (debajo de los nodos) ─────────────
+  // Las pills se dibujan en pasada 3, encima de los nodos, para evitar
+  // que queden tapadas (z-order SVG = orden de inserción).
+  var edgeData = edges.map(function(e) {
+    var s = nMap[e.s], t = nMap[e.t];
+    var x1 = s.cx + s.w/2, y1 = s.cy;
+    var x2 = t.cx - t.w/2, y2 = t.cy;
+    var cp = (x2 - x1) / 2;
+    return {
+      label: e.label,
+      mx: (x1 + x2) / 2, my: (y1 + y2) / 2,
+      d: 'M'+x1+','+y1+' C'+(x1+cp)+','+y1+' '+(x2-cp)+','+y2+' '+x2+','+y2
+    };
+  });
+
+  edgeData.forEach(function(e) {
+    svg.append('path')
+      .attr('d', e.d)
+      .attr('fill','none')
+      .attr('stroke','#1246FF').attr('stroke-width',1.5)
+      .attr('marker-end','url(#arr)');
+  });
+
+  // ── Pasada 2: nodos ────────────────────────────────────────────────
+  nodes.forEach(function(n) {
+    var x = n.cx - n.w/2, y = n.cy - n.h/2;
+    var g = svg.append('g').attr('transform','translate('+x+','+y+')');
+
+    g.append('rect')
+      .attr('width', n.w).attr('height', n.h).attr('rx', 8)
+      .attr('fill', n.bg)
+      .attr('stroke', n.accent)
+      .attr('stroke-width', n.accent === '#D8D4CC' ? 1 : 2)
+      .attr('filter','url(#nsh)');
+
+    var px = 13, py = 10;
+    var fo = g.append('foreignObject')
+      .attr('x', px).attr('y', py)
+      .attr('width', n.w - px*2)
+      .attr('height', n.h - py*2);
+
+    var wrap = fo.append('xhtml:div').style('overflow','hidden').style('height','100%');
+
+    wrap.append('xhtml:div')
+      .style('font-family','monospace')
+      .style('font-size','10px').style('font-weight','800')
+      .style('letter-spacing','0.14em')
+      .style('color', n.codeColor)
+      .style('margin-bottom','6px')
+      .text(n.code);
+
+    wrap.append('xhtml:div')
+      .style('font-family','"Inter",system-ui,sans-serif')
+      .style('font-size', n.inner ? '11.5px' : '13px')
+      .style('font-weight','700')
+      .style('color','#0A1628')
+      .style('line-height','1.25')
+      .style('margin-bottom','5px')
+      .text(n.title);
+
+    wrap.append('xhtml:div')
+      .style('font-family','"Inter",system-ui,sans-serif')
+      .style('font-size', n.inner ? '9px' : '10px')
+      .style('color','#6B6B6B')
+      .style('line-height','1.5')
+      .text(n.desc);
+  });
+
+  // ── Pasada 3: pills de etiqueta (encima de nodos) ──────────────────
+  edgeData.forEach(function(e) {
+    svg.append('rect')
+      .attr('x', e.mx - 21).attr('y', e.my - 16)
+      .attr('width', 42).attr('height', 10)
+      .attr('rx', 2).attr('fill','#FAFAF7')
+      .attr('stroke','#D8D4CC').attr('stroke-width',0.8);
+
+    svg.append('text')
+      .attr('x', e.mx).attr('y', e.my - 8)
+      .attr('text-anchor','middle')
+      .attr('font-family','"Inter",system-ui,sans-serif')
+      .attr('font-size',7).attr('font-weight',700)
+      .attr('letter-spacing','0.07em').attr('fill','#6B6B6B')
+      .text(e.label);
+  });
+}());
+</script>
 
 <script>
 // Reveal on scroll
