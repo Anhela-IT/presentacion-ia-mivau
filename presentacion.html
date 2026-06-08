@@ -1,0 +1,1400 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PoC MIVAU · Anhela IT</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Serif+Display:ital@0;1&display=swap');
+
+:root {
+  --cream:   #F2EFE9;
+  --white:   #FAFAF7;
+  --ink:     #111010;
+  --navy:    #0A1628;
+  --blue:    #1246FF;
+  --coral:   #FF4D2E;
+  --sage:    #3D6B5B;
+  --mid:     #6B6B6B;
+  --border:  #D8D4CC;
+  --r: 12px;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ── NAV ─────────────────────────────── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 56px;
+  background: var(--navy);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+.nav-brand .dot {
+  width: 8px; height: 8px;
+  background: var(--coral);
+  border-radius: 50%;
+}
+.nav-links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--white);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: rgba(255,255,255,0.7); }
+
+.nav-client {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.04em;
+}
+
+/* ── HERO ─────────────────────────────── */
+#hero {
+  min-height: 88vh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  padding: 72px 56px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.hero-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: end;
+  padding-bottom: 40px;
+  gap: 48px;
+}
+
+.hero-left {}
+
+.hero-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 40px;
+}
+.hero-label::before {
+  content: '';
+  display: block;
+  width: 24px; height: 1px;
+  background: var(--coral);
+}
+.hero-label span { color: var(--coral); }
+
+.hero-h1 {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: clamp(48px, 5.5vw, 82px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--navy);
+  margin-bottom: 32px;
+}
+.hero-h1 em {
+  font-style: italic;
+  color: var(--blue);
+}
+
+.hero-desc {
+  font-size: 16px;
+  color: var(--mid);
+  line-height: 1.75;
+  max-width: 420px;
+}
+
+.hero-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 16px;
+  padding-left: 48px;
+  border-left: 1px solid var(--border);
+}
+
+.hero-stat {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border);
+}
+.hero-stat:first-child { border-top: 1px solid var(--border); }
+.hero-stat .num {
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: var(--navy);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.hero-stat .num sup {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--blue);
+  vertical-align: super;
+}
+.hero-stat .lbl {
+  font-size: 12px;
+  color: var(--mid);
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+
+.hero-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 0;
+  border-top: 1px solid var(--border);
+}
+.hero-footer-tag {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mid);
+}
+.scroll-cta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mid);
+}
+.scroll-arrow {
+  width: 32px; height: 32px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: arrowBounce 2s ease-in-out infinite;
+}
+@keyframes arrowBounce {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(4px); }
+}
+
+/* ── SHARED SECTION STYLE ──────────────── */
+.section {
+  padding: 72px 56px;
+  border-bottom: 1px solid var(--border);
+}
+
+.sec-num {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 48px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.sec-num .n {
+  font-family: 'DM Serif Display', serif;
+  font-size: 13px;
+  color: var(--coral);
+}
+
+.sec-h {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: clamp(34px, 3.5vw, 54px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--navy);
+}
+.sec-h em { font-style: italic; color: var(--blue); }
+
+/* ── RETO ─────────────────────────────── */
+#reto .reto-intro {
+  font-size: 15px;
+  color: var(--mid);
+  line-height: 1.7;
+  max-width: 580px;
+  margin-top: 16px;
+  margin-bottom: 40px;
+}
+
+.reto-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-top: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+}
+
+.reto-item {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 16px;
+  padding: 24px 24px 24px 0;
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  padding-left: 24px;
+}
+.reto-item.visible { opacity: 1; transform: none; }
+
+.reto-item-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 16px;
+  color: #ABABAB;
+  font-style: italic;
+  padding-top: 2px;
+}
+.reto-item h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+.reto-item p {
+  font-size: 13px;
+  color: var(--mid);
+  line-height: 1.6;
+}
+.reto-item:first-child { border-top: 1px solid var(--border); }
+
+/* ── PROPUESTA ─────────────────────────── */
+.propuesta-body {
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 72px;
+  align-items: start;
+}
+
+.propuesta-text p {
+  font-size: 15px;
+  color: var(--mid);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.obj-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.obj-list li {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--mid);
+  line-height: 1.5;
+}
+.obj-list li:first-child { border-top: 1px solid var(--border); }
+.obj-idx {
+  font-family: 'DM Serif Display', serif;
+  font-size: 11px;
+  font-style: italic;
+  color: var(--coral);
+  flex-shrink: 0;
+}
+
+/* métricas: rejilla 2×2 */
+.prop-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-top: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+}
+.prop-metric {
+  padding: 20px 20px 20px 20px;
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+}
+.prop-metric .m-val {
+  font-family: 'DM Serif Display', serif;
+  font-size: 26px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--navy);
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+.prop-metric .m-val em {
+  font-style: italic;
+  color: var(--blue);
+}
+.prop-metric .m-lbl {
+  font-size: 11px;
+  color: var(--mid);
+  line-height: 1.5;
+  max-width: 280px;
+}
+
+/* ── ARQUITECTURA ──────────────────────── */
+#reto       { background: var(--white); }
+#propuesta  { background: var(--cream); }
+#arquitectura { background: var(--white); }
+
+.arch-intro {
+  font-size: 17px;
+  color: var(--mid);
+  max-width: 560px;
+  line-height: 1.75;
+  margin-top: 24px;
+}
+
+/* ── ARCH TIMELINE HORIZONTAL ──────────── */
+.arch-tl-h {
+  margin-top: 48px;
+  position: relative;
+}
+
+/* línea horizontal continua, alineada al centro de los dots */
+.arch-tl-h::before {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  top: 36px;           /* num (20px) + gap (6px) + dot-center (5px) = ~36px */
+  height: 1px;
+  background: var(--border);
+  z-index: 0;
+}
+
+.tlh-steps {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.5fr 1fr;
+  gap: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+/* cada columna de paso */
+.tlh-step {
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.tlh-step.visible { opacity: 1; transform: none; }
+
+/* número encima de la línea */
+.tlh-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 12px;
+  font-style: italic;
+  color: #ABABAB;
+  line-height: 1;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+/* dot sobre la línea */
+.tlh-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 2px solid var(--border);
+  flex-shrink: 0;
+  margin-bottom: 0;
+  position: relative;
+  z-index: 2;
+}
+.tlh-dot.coral { border-color: var(--coral); }
+.tlh-dot.blue  { border-color: var(--blue); }
+.tlh-dot.sage  { border-color: var(--sage); }
+.tlh-dot.navy  { border-color: var(--navy); }
+
+/* etiqueta de flujo bajo el dot, antes del contenido */
+.tlh-flow {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ABABAB;
+  margin-top: 8px;
+  margin-bottom: 20px;
+  min-height: 14px;
+}
+
+/* contenido del paso */
+.tlh-code {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-family: monospace;
+  color: var(--mid);
+  margin-bottom: 2px;
+}
+.tlh-layer {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ABABAB;
+  margin-bottom: 12px;
+}
+.tlh-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--navy);
+  letter-spacing: -0.01em;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+.tlh-desc {
+  font-size: 12px;
+  color: var(--mid);
+  line-height: 1.65;
+  margin-bottom: 14px;
+}
+.tlh-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.tlh-chip {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--ink);
+  padding: 3px 10px;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  background: var(--white);
+}
+.tlh-chip.hl {
+  color: var(--blue);
+  border-color: rgba(18,70,255,0.25);
+  background: #EEF3FF;
+}
+
+/* sub-pasos dentro del paso 03 */
+.tlh-subs {
+  margin-top: 16px;
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.tlh-sub {
+  padding-left: 10px;
+  border-left: 1px solid var(--border);
+}
+.tlh-sub-code {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-family: monospace;
+  color: var(--sage);
+  margin-bottom: 2px;
+}
+.tlh-sub-name {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 2px;
+}
+.tlh-sub-detail {
+  font-size: 11px;
+  color: var(--mid);
+  line-height: 1.5;
+}
+
+/* ── MÓDULOS ───────────────────────────── */
+#modulos { background: var(--cream); }
+
+.modules-tabs {
+  margin-top: 40px;
+}
+
+.tab-bar {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  padding: 12px 18px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--mid);
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.tab-btn:hover { color: var(--ink); }
+.tab-btn.active { color: var(--navy); border-bottom-color: var(--blue); }
+
+.tab-panels { margin-top: 0; }
+
+.tab-panel {
+  display: none;
+  padding: 48px 0;
+  animation: fadeIn 0.3s ease;
+}
+.tab-panel.active { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+.panel-left h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 32px;
+  color: var(--navy);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+.panel-left .panel-code {
+  display: inline-block;
+  font-family: monospace;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  color: var(--blue);
+  letter-spacing: 0.06em;
+  margin-bottom: 24px;
+}
+.panel-left p {
+  font-size: 15px;
+  color: var(--mid);
+  line-height: 1.75;
+  margin-bottom: 32px;
+}
+
+.feature-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.feature-row {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  padding-left: 14px;
+}
+.feature-row::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 50%;
+  transform: translateY(-50%);
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: var(--mid);
+}
+.feature-row:first-child { border-top: 1px solid var(--border); }
+.feature-row .f-text { font-size: 13px; color: var(--mid); line-height: 1.5; }
+.feature-row .f-text strong { color: var(--ink); display: block; font-weight: 600; margin-bottom: 2px; }
+
+.panel-right {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 40px;
+}
+.panel-right h4 {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 24px;
+}
+
+.capa-list { display: flex; flex-direction: column; gap: 10px; }
+.capa-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 16px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition: border-color 0.2s;
+}
+.capa-item:hover { border-color: var(--blue); }
+.capa-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 20px;
+  color: #ABABAB;
+  flex-shrink: 0;
+  line-height: 1;
+  min-width: 20px;
+  text-align: right;
+  font-style: italic;
+}
+.capa-body .capa-title { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
+.capa-body .capa-desc  { font-size: 12px; color: var(--mid); line-height: 1.5; }
+
+.stack-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.stack-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--navy);
+  transition: border-color 0.2s;
+}
+.stack-row:hover { border-color: var(--blue); }
+.stack-row .sr-role { font-size: 11px; font-weight: 400; color: var(--mid); }
+
+/* ── SEGURIDAD ─────────────────────────── */
+#seguridad {
+  padding: 72px 56px;
+  border-bottom: 1px solid var(--border);
+  background: var(--white);
+}
+
+.seg-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: end;
+  margin-bottom: 48px;
+}
+
+.seg-header p {
+  font-size: 14px;
+  color: var(--mid);
+  line-height: 1.7;
+  padding-top: 16px;
+}
+
+.seg-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+}
+
+.seg-point {
+  padding: 28px 24px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.sp-marker {
+  width: 24px;
+  height: 2px;
+  background: var(--border);
+  margin-bottom: 20px;
+}
+.sp-marker.coral { background: var(--coral); }
+.sp-marker.blue  { background: var(--blue); }
+.sp-marker.sage  { background: var(--sage); }
+.sp-marker.navy  { background: var(--navy); }
+
+.sp-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+.sp-desc {
+  font-size: 12px;
+  color: var(--mid);
+  line-height: 1.6;
+}
+
+/* ── FOOTER ────────────────────────────── */
+footer {
+  padding: 40px 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-brand {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--navy);
+}
+.footer-meta {
+  font-size: 12px;
+  color: var(--mid);
+}
+.footer-email {
+  font-size: 12px;
+  color: var(--blue);
+  font-weight: 500;
+}
+
+/* ── UTILS ─────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+.d1 { transition-delay: 0.1s; }
+.d2 { transition-delay: 0.2s; }
+.d3 { transition-delay: 0.3s; }
+
+@media (max-width: 960px) {
+  nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+  .nav-client { display: none; }
+  #hero, .section, #seguridad { padding-left: 24px; padding-right: 24px; }
+  .hero-main { grid-template-columns: 1fr; }
+  .hero-right { padding-left: 0; border-left: none; border-top: 1px solid var(--border); padding-top: 32px; }
+  .reto-items { grid-template-columns: 1fr; }
+  .propuesta-body { grid-template-columns: 1fr; gap: 32px; }
+  .prop-metrics { grid-template-columns: 1fr 1fr; }
+  .arch-tl-h::before { display: none; }
+  .tlh-steps { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .tlh-flow { display: none; }
+  .tab-panel.active { grid-template-columns: 1fr; }
+  .seg-header { grid-template-columns: 1fr; gap: 16px; }
+  .seg-grid { grid-template-columns: 1fr 1fr; }
+  footer { flex-direction: column; gap: 12px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <img src="https://anhelait.com/wp-content/uploads/2023/12/logo_anhela.png" alt="Anhela IT" height="28" style="display:block; object-fit:contain; filter: brightness(0) invert(1); opacity:0.9;">
+  </div>
+  <ul class="nav-links">
+    <li><a href="#reto">El reto</a></li>
+    <li><a href="#propuesta">Propuesta</a></li>
+    <li><a href="#arquitectura">Arquitectura</a></li>
+    <li><a href="#modulos">Módulos</a></li>
+    <li><a href="#seguridad">Seguridad</a></li>
+  </ul>
+  <div class="nav-client">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Logotipo_del_Ministerio_de_Vivienda_y_Agenda_Urbana.svg" alt="MIVAU" height="32" style="display:block; object-fit:contain;">
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-main">
+    <div class="hero-left">
+      <div class="hero-label">
+        <span>PoC</span> · Ministerio de Vivienda y Agenda Urbana
+      </div>
+      <h1 class="hero-h1">
+        Extracción<br>
+        <em>inteligente</em><br>
+        de documentos<br>
+        de agenda urbana
+      </h1>
+      <p class="hero-desc">
+        Una prueba de concepto que convierte documentación no estructurada
+        del MIVAU en datos verificables, trazables y reutilizables mediante
+        inteligencia artificial.
+      </p>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-stat">
+        <div class="num">6<sup>mód.</sup></div>
+        <div class="lbl">Módulos funcionales integrados</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">100<sup>%</sup></div>
+        <div class="lbl">Trazabilidad al documento fuente</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">Open<sup>src</sup></div>
+        <div class="lbl">Modelos IA soberanos y auditables</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">ENS</div>
+        <div class="lbl">Esquema Nacional de Seguridad</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-footer">
+    <div class="hero-footer-tag" style="display:flex; align-items:center; gap:24px;">
+      <img src="https://anhelait.com/wp-content/uploads/2023/12/logo_anhela.png" alt="Anhela IT" height="22" style="object-fit:contain; opacity:0.7;">
+      <span style="color:var(--border);">×</span>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Logotipo_del_Ministerio_de_Vivienda_y_Agenda_Urbana.svg" alt="MIVAU" height="28" style="object-fit:contain; opacity:0.7;">
+    </div>
+    <div class="scroll-cta">
+      Explorar
+      <div class="scroll-arrow">
+        <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RETO -->
+<section id="reto" class="section">
+  <div class="sec-num"><span class="n">01</span> El reto</div>
+  <h2 class="sec-h">Documentación masiva,<br>sin estructura <em>aprovechable</em></h2>
+
+  <p class="reto-intro">El MIVAU gestiona cientos de documentos en formatos heterogéneos. Extraer información de valor de forma manual es lento, costoso e inconsistente.</p>
+
+  <div class="reto-items">
+    <div class="reto-item">
+      <div class="reto-item-num">1</div>
+      <div>
+        <h3>Formatos sin capa de texto</h3>
+        <p>Actas y informes escaneados sin texto nativo, imposibles de procesar automáticamente.</p>
+      </div>
+    </div>
+    <div class="reto-item">
+      <div class="reto-item-num">2</div>
+      <div>
+        <h3>Información oculta en prosa técnica</h3>
+        <p>Hitos, indicadores y entidades dispersos en texto especializado sin estructura ni etiquetado.</p>
+      </div>
+    </div>
+    <div class="reto-item">
+      <div class="reto-item-num">3</div>
+      <div>
+        <h3>Proceso manual inescalable</h3>
+        <p>La revisión humana no escala con el volumen creciente de documentación nacional.</p>
+      </div>
+    </div>
+    <div class="reto-item">
+      <div class="reto-item-num">4</div>
+      <div>
+        <h3>Sin trazabilidad ni reutilización</h3>
+        <p>Los datos extraídos no quedan enlazados a su fuente ni disponibles para integración futura.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROPUESTA -->
+<section id="propuesta" class="section">
+  <div class="sec-num"><span class="n">02</span> La propuesta</div>
+  <h2 class="sec-h">Una PoC que demuestra<br>el camino <em>a escala</em></h2>
+
+  <div class="propuesta-body">
+    <div class="propuesta-text reveal">
+      <p>
+        Desarrollamos una Prueba de Concepto funcional que valida el uso de inteligencia
+        artificial para procesar documentación de agenda urbana de forma automática,
+        trazable y auditada, en estrecha colaboración con el equipo técnico del MIVAU.
+      </p>
+
+      <ul class="obj-list">
+        <li>
+          <span class="obj-idx">→</span>
+          Validar la viabilidad técnica del procesamiento inteligente con tecnología ALIA
+        </li>
+        <li>
+          <span class="obj-idx">→</span>
+          Generar un modelo de datos estructurado, reutilizable y consultable
+        </li>
+        <li>
+          <span class="obj-idx">→</span>
+          Habilitar validación humana y consulta semántica sobre los resultados
+        </li>
+        <li>
+          <span class="obj-idx">→</span>
+          Obtener evidencias objetivas del grado de automatización alcanzable
+        </li>
+        <li>
+          <span class="obj-idx">→</span>
+          Exponer APIs REST reutilizables e integrables con sistemas futuros del Ministerio
+        </li>
+      </ul>
+    </div>
+
+    <div class="prop-metrics reveal d2">
+      <div class="prop-metric">
+        <div class="m-val">PDF <em>&</em> DOCX</div>
+        <div class="m-lbl">Formatos soportados, incluyendo documentos escaneados con OCR automático</div>
+      </div>
+      <div class="prop-metric">
+        <div class="m-val"><em>RAG</em></div>
+        <div class="m-lbl">Chat documental con respuestas basadas exclusivamente en las fuentes oficiales</div>
+      </div>
+      <div class="prop-metric">
+        <div class="m-val">Human<br><em>in the loop</em></div>
+        <div class="m-lbl">Los técnicos del MIVAU revisan y validan cada dato antes de su uso final</div>
+      </div>
+      <div class="prop-metric">
+        <div class="m-val">6 <em>módulos</em></div>
+        <div class="m-lbl">Arquitectura modular integrada, cada componente con responsabilidad única</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARQUITECTURA -->
+<section id="arquitectura" class="section">
+  <div class="sec-num"><span class="n">03</span> Arquitectura</div>
+  <h2 class="sec-h">Modular, desacoplada<br>y <em>orientada al futuro</em></h2>
+  <p class="arch-intro reveal">
+    Cada capa tiene una responsabilidad clara. El sistema puede crecer módulo a módulo
+    e integrarse con los sistemas tecnológicos existentes del Ministerio.
+  </p>
+
+  <div class="arch-tl-h reveal d1">
+    <div class="tlh-steps">
+
+      <!-- 01 · MUI -->
+      <div class="tlh-step">
+        <div class="tlh-num">01</div>
+        <div class="tlh-dot coral"></div>
+        <div class="tlh-flow">peticiones HTTP ›</div>
+        <div class="tlh-code">MUI</div>
+        <div class="tlh-layer">Presentación</div>
+        <div class="tlh-title">Interfaz de usuario</div>
+        <p class="tlh-desc">Dos pantallas: <strong>Home</strong> para cargar documentos y <strong>Report</strong> para explorar datos. Panel lateral con asistente de IA sin perder contexto.</p>
+        <div class="tlh-tech">
+          <span class="tlh-chip">React</span>
+          <span class="tlh-chip">Drag &amp; Drop</span>
+          <span class="tlh-chip">Panel IA</span>
+        </div>
+      </div>
+
+      <!-- 02 · MAP -->
+      <div class="tlh-step">
+        <div class="tlh-num">02</div>
+        <div class="tlh-dot blue"></div>
+        <div class="tlh-flow">documentos normalizados ›</div>
+        <div class="tlh-code">MAP</div>
+        <div class="tlh-layer">Servicios</div>
+        <div class="tlh-title">API REST</div>
+        <p class="tlh-desc">Pasarela central. Valida cada petición con esquemas Pydantic y coordina el flujo entre todos los módulos. Endpoints integrables con sistemas del Ministerio.</p>
+        <div class="tlh-tech">
+          <span class="tlh-chip hl">FastAPI</span>
+          <span class="tlh-chip hl">Pydantic</span>
+        </div>
+      </div>
+
+      <!-- 03 · MCD + MEI + MVD -->
+      <div class="tlh-step">
+        <div class="tlh-num">03</div>
+        <div class="tlh-dot sage"></div>
+        <div class="tlh-flow">datos validados ›</div>
+        <div class="tlh-code">MCD · MEI · MVD</div>
+        <div class="tlh-layer">Procesamiento</div>
+        <div class="tlh-title">Ingesta, extracción y validación</div>
+        <p class="tlh-desc">Tres módulos encadenados que convierten documentación bruta en datos estructurados y trazables.</p>
+        <div class="tlh-subs">
+          <div class="tlh-sub">
+            <div class="tlh-sub-code">MCD</div>
+            <div class="tlh-sub-name">Carga documental</div>
+            <div class="tlh-sub-detail">PDF nativos, DOCX y escaneados. OCR automático con Tesseract.</div>
+          </div>
+          <div class="tlh-sub">
+            <div class="tlh-sub-code">MEI</div>
+            <div class="tlh-sub-name">Extracción IA</div>
+            <div class="tlh-sub-detail">Pipeline de 6 capas. LLM ALIA-40b, prompts ad-hoc, embeddings EmbeddingGemma.</div>
+          </div>
+          <div class="tlh-sub">
+            <div class="tlh-sub-code">MVD</div>
+            <div class="tlh-sub-name">Validación</div>
+            <div class="tlh-sub-detail">Human-in-the-loop y chat RAG contra la fuente original.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 04 · MAL -->
+      <div class="tlh-step">
+        <div class="tlh-num">04</div>
+        <div class="tlh-dot navy"></div>
+        <div class="tlh-flow">&nbsp;</div>
+        <div class="tlh-code">MAL</div>
+        <div class="tlh-layer">Datos</div>
+        <div class="tlh-title">Almacenamiento</div>
+        <p class="tlh-desc">Persistencia dual: relacional para datos estructurados y pgvector para embeddings. Trazabilidad completa a página y bloque de origen.</p>
+        <div class="tlh-tech">
+          <span class="tlh-chip hl">PostgreSQL</span>
+          <span class="tlh-chip hl">pgvector</span>
+          <span class="tlh-chip">Embeddings</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- MÓDULOS -->
+<section id="modulos" class="section">
+  <div class="sec-num"><span class="n">04</span> Módulos</div>
+  <h2 class="sec-h">Seis componentes,<br>una solución <em>completa</em></h2>
+
+  <div class="modules-tabs reveal">
+    <div class="tab-bar">
+      <button class="tab-btn active" data-tab="mcd">MCD · Carga</button>
+      <button class="tab-btn" data-tab="mei">MEI · Extracción IA</button>
+      <button class="tab-btn" data-tab="mvd">MVD · Validación</button>
+      <button class="tab-btn" data-tab="map">MAP · API</button>
+      <button class="tab-btn" data-tab="mal">MAL · Datos</button>
+      <button class="tab-btn" data-tab="mui">MUI · Interfaz</button>
+    </div>
+
+    <div class="tab-panels">
+
+      <!-- MCD -->
+      <div class="tab-panel active" id="tab-mcd">
+        <div class="panel-left">
+          <span class="panel-code">MCD</span>
+          <h3>Módulo de Carga Documental</h3>
+          <p>Responsable de la recopilación, transformación y normalización de documentos. Detecta automáticamente si un PDF tiene texto nativo o es una imagen escaneada y activa el protocolo correspondiente.</p>
+          <div class="feature-grid">
+            <div class="feature-row">
+              <div class="f-text"><strong>PDF nativo y escaneado</strong>Soporte completo para ambos tipos con detección automática de capa de texto</div>
+            </div>
+            <div class="feature-row">
+              <div class="f-text"><strong>Microsoft Word (.docx)</strong>Procesamiento de documentos de texto estructurado de ofimática corporativa</div>
+            </div>
+            <div class="feature-row">
+              <div class="f-text"><strong>OCR con Tesseract</strong>Activación automática en documentos sin texto nativo, optimizado para español</div>
+            </div>
+            <div class="feature-row">
+              <div class="f-text"><strong>Metadatos de carga</strong>Nombre, tipo, fecha, nº páginas, origen y estado de procesamiento por documento</div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-right">
+          <h4>Tecnologías clave</h4>
+          <div class="stack-list">
+            <div class="stack-row">PyMuPDF <span class="sr-role">Lectura y transformación de PDF y Word</span></div>
+            <div class="stack-row">Tesseract OCR <span class="sr-role">Reconocimiento óptico de caracteres</span></div>
+            <div class="stack-row">FastAPI <span class="sr-role">Endpoint de ingesta documental</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MEI -->
+      <div class="tab-panel" id="tab-mei">
+        <div class="panel-left">
+          <span class="panel-code">MEI</span>
+          <h3>Módulo de Extracción y Enriquecimiento</h3>
+          <p>El núcleo de inteligencia del sistema. Orquesta el procesamiento semántico mediante un pipeline de seis capas especializadas. Utiliza análisis jerárquico por bloques para documentos extensos.</p>
+          <div class="feature-grid">
+            <div class="feature-row">
+              <div class="f-text"><strong>Fragmentación inteligente</strong>Bloques de ~2.000 tokens con solapamiento de 250 palabras para preservar coherencia</div>
+            </div>
+            <div class="feature-row">
+              <div class="f-text"><strong>Prompt engineering ad-hoc</strong>Prompts diseñados por tipo de campo para maximizar la precisión de extracción</div>
+            </div>
+            <div class="feature-row">
+              <div class="f-text"><strong>Trazabilidad completa</strong>Cada dato extraído referencia su bloque y página de origen en el documento</div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-right">
+          <h4>Pipeline de 6 capas</h4>
+          <div class="capa-list">
+            <div class="capa-item">
+              <div class="capa-num">I</div>
+              <div class="capa-body">
+                <div class="capa-title">Metadatos</div>
+                <div class="capa-desc">Identificación y registro por documento ingestado</div>
+              </div>
+            </div>
+            <div class="capa-item">
+              <div class="capa-num">II</div>
+              <div class="capa-body">
+                <div class="capa-title">LLM · ALIA-40b-instruct</div>
+                <div class="capa-desc">Modelo open source para extracción semántica final</div>
+              </div>
+            </div>
+            <div class="capa-item">
+              <div class="capa-num">III</div>
+              <div class="capa-body">
+                <div class="capa-title">Prompts</div>
+                <div class="capa-desc">Ingeniería de prompts ad-hoc por campo a extraer</div>
+              </div>
+            </div>
+            <div class="capa-item">
+              <div class="capa-num">IV</div>
+              <div class="capa-body">
+                <div class="capa-title">Trazabilidad</div>
+                <div class="capa-desc">Referencia a bloque, página y posición de cada dato</div>
+              </div>
+            </div>
+            <div class="capa-item">
+              <div class="capa-num">V</div>
+              <div class="capa-body">
+                <div class="capa-title">Normalización</div>
+                <div class="capa-desc">Resolución de entidades a su forma canónica</div>
+              </div>
+            </div>
+            <div class="capa-item">
+              <div class="capa-num">VI</div>
+              <div class="capa-body">
+                <div class="capa-title">Embeddings · EmbeddingGemma</div>
+                <div class="capa-desc">Vectorización para búsqueda semántica y RAG</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MVD -->
+      <div class="tab-panel" id="tab-mvd">
+        <div class="panel-left">
+          <span class="panel-code">MVD</span>
+          <h3>Módulo de Validación</h3>
+          <p>Garantiza la calidad y fiabilidad de los resultados combinando revisión experta con un asistente de chat basado en RAG que solo responde desde las fuentes oficiales cargadas.</p>
+          <div class="feature-grid">
+            <div class="feature-row">
+              <div class="f-text"><strong>Human-in-the-loop</strong>Los técnicos del MIVAU pueden revisar, ajustar y validar cada dato antes de su uso final</div>
+            </div>
+            <div class="feature-row">
+              <div class="f-text"><strong>Chat documental RAG</strong>Preguntas sobre los documentos cargados con respuestas verificadas en la fuente oficial</div>
+            </div>
+            <div class="feature-row">
+              <div class="f-text"><strong>Panel lateral contextual</strong>El asistente se abre sin abandonar la vista de datos, manteniendo el contexto visual</div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-right">
+          <h4>Flujo de validación</h4>
+          <div class="stack-list">
+            <div class="stack-row">Extracción automática <span class="sr-role">MEI genera los datos</span></div>
+            <div class="stack-row">Revisión humana <span class="sr-role">Técnico valida o corrige</span></div>
+            <div class="stack-row">Consulta RAG <span class="sr-role">Chat verifica con fuente</span></div>
+            <div class="stack-row">Aprobación final <span class="sr-role">Dato listo para uso</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAP -->
+      <div class="tab-panel" id="tab-map">
+        <div class="panel-left">
+          <span class="panel-code">MAP</span>
+          <h3>Módulo API REST</h3>
+          <p>Pasarela de comunicación central basada en FastAPI. Orquesta el flujo de datos de extremo a extremo, asegurando que cada petición sea validada, procesada y respondida bajo criterios de estabilidad y seguridad.</p>
+          <div class="feature-grid">
+            <div class="feature-row">
+              <div class="f-text"><strong>Endpoints reutilizables</strong>APIs REST estándar integrables con futuros sistemas del Ministerio</div>
+            </div>
+            <div class="feature-row">
+              <div class="f-text"><strong>Validación Pydantic</strong>Esquemas JSON tipados y validados en cada entrada y salida</div>
+            </div>
+            <div class="feature-row">
+              <div class="f-text"><strong>Orquestación E2E</strong>Coordina MCD → MEI → MVD → MAL en cada operación de procesamiento</div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-right">
+          <h4>Stack técnico</h4>
+          <div class="stack-list">
+            <div class="stack-row">FastAPI <span class="sr-role">Framework web asíncrono</span></div>
+            <div class="stack-row">Pydantic <span class="sr-role">Validación de esquemas JSON</span></div>
+            <div class="stack-row">Python <span class="sr-role">Runtime</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAL -->
+      <div class="tab-panel" id="tab-mal">
+        <div class="panel-left">
+          <span class="panel-code">MAL</span>
+          <h3>Módulo de Almacenamiento</h3>
+          <p>Garantiza la persistencia, organización y disponibilidad de datos estructurados y vectoriales. Habilita búsqueda semántica y capacidades RAG sobre el corpus documental completo.</p>
+          <div class="feature-grid">
+            <div class="feature-row">
+              <div class="f-text"><strong>PostgreSQL relacional</strong>Datos estructurados extraídos, metadatos y resultados de validación</div>
+            </div>
+            <div class="feature-row">
+              <div class="f-text"><strong>pgvector</strong>Almacenamiento de embeddings vectoriales para búsqueda semántica y RAG</div>
+            </div>
+            <div class="feature-row">
+              <div class="f-text"><strong>Búsqueda semántica</strong>Recuperación por similitud vectorial sobre el corpus completo</div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-right">
+          <h4>Estructura de datos</h4>
+          <div class="stack-list">
+            <div class="stack-row">Documentos ingestados <span class="sr-role">Metadatos + texto por página</span></div>
+            <div class="stack-row">Datos extraídos <span class="sr-role">Campos estructurados + trazabilidad</span></div>
+            <div class="stack-row">Embeddings vectoriales <span class="sr-role">pgvector para RAG</span></div>
+            <div class="stack-row">Estado de validación <span class="sr-role">Historial de revisión humana</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MUI -->
+      <div class="tab-panel" id="tab-mui">
+        <div class="panel-left">
+          <span class="panel-code">MUI</span>
+          <h3>Módulo de Interfaz de Usuario</h3>
+          <p>Frontend React organizado en dos pantallas principales: Home para cargar documentos y disparar el procesamiento, y Report para visualizar y manipular los datos extraídos. Diseño intencionadamente guiado.</p>
+          <div class="feature-grid">
+            <div class="feature-row">
+              <div class="f-text"><strong>Pantalla Home</strong>Zona de arrastre, botón de procesamiento e indicador de disponibilidad del servicio</div>
+            </div>
+            <div class="feature-row">
+              <div class="f-text"><strong>Pantalla Report</strong>Visualización y edición de datos extraídos con acciones agrupadas y explícitas</div>
+            </div>
+            <div class="feature-row">
+              <div class="f-text"><strong>Panel IA lateral</strong>Asistente de validación que se abre sin abandonar la vista de datos</div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-right">
+          <h4>Stack frontend</h4>
+          <div class="stack-list">
+            <div class="stack-row">React <span class="sr-role">Framework UI</span></div>
+            <div class="stack-row">Componentes reutilizables <span class="sr-role">Coherencia visual entre vistas</span></div>
+            <div class="stack-row">Drag & Drop <span class="sr-role">Carga de documentos intuitiva</span></div>
+            <div class="stack-row">Panel lateral IA <span class="sr-role">Chat RAG integrado en contexto</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SEGURIDAD -->
+<section id="seguridad">
+  <div class="seg-header reveal">
+    <div>
+      <div class="sec-num"><span class="n">05</span> Seguridad</div>
+      <h2 class="sec-h">Seguridad desde<br>el <em>diseño</em></h2>
+    </div>
+    <p>Toda la información tratada es estrictamente confidencial y se procesa exclusivamente para los fines de la PoC. Los derechos de explotación corresponden íntegramente al MIVAU.</p>
+  </div>
+
+  <div class="seg-grid reveal d1">
+    <div class="seg-point">
+      <div class="sp-marker coral"></div>
+      <div class="sp-title">Esquema Nacional de Seguridad</div>
+      <div class="sp-desc">Alineación con las directrices y políticas de seguridad del MIVAU y cumplimiento del ENS.</div>
+    </div>
+    <div class="seg-point">
+      <div class="sp-marker blue"></div>
+      <div class="sp-title">Modelos open source soberanos</div>
+      <div class="sp-desc">Procesamiento IA con modelos auditables sin dependencia de servicios de nube externos.</div>
+    </div>
+    <div class="seg-point">
+      <div class="sp-marker sage"></div>
+      <div class="sp-title">Propiedad intelectual del Ministerio</div>
+      <div class="sp-desc">Derechos de explotación de código, aplicaciones y documentación íntegramente del MIVAU.</div>
+    </div>
+    <div class="seg-point">
+      <div class="sp-marker navy"></div>
+      <div class="sp-title">Tratamiento exclusivo para la PoC</div>
+      <div class="sp-desc">Ningún dato será utilizado fuera del ámbito estrictamente definido en el contrato.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img src="https://anhelait.com/wp-content/uploads/2023/12/logo_anhela.png" alt="Anhela IT" height="24" style="object-fit:contain;">
+  <div class="footer-meta">Propuesta técnica · Mayo 2026</div>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Logotipo_del_Ministerio_de_Vivienda_y_Agenda_Urbana.svg" alt="MIVAU" height="30" style="object-fit:contain;">
+</footer>
+
+<script>
+// Reveal on scroll
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal, .reto-item, .tlh-step').forEach(el => observer.observe(el));
+
+// Stagger reto items
+document.querySelectorAll('.reto-item').forEach((el, i) => {
+  el.style.transitionDelay = (i * 0.12) + 's';
+});
+
+// Stagger timeline steps
+document.querySelectorAll('.tlh-step').forEach((el, i) => {
+  el.style.transitionDelay = (i * 0.12) + 's';
+});
+
+
+// Tabs
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    const tab = btn.dataset.tab;
+    document.getElementById('tab-' + tab).classList.add('active');
+  });
+});
+
+</script>
+
+</body>
+</html>
+
