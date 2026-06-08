@@ -84,7 +84,7 @@ nav {
 
 /* ── HERO ─────────────────────────────── */
 #hero {
-  min-height: 88vh;
+  min-height: clamp(600px, 88vh, 900px);
   display: grid;
   grid-template-rows: 1fr auto;
   padding: 72px 56px 0;
@@ -94,7 +94,7 @@ nav {
 .hero-main {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  align-items: end;
+  align-items: center;
   padding-bottom: 40px;
   gap: 48px;
 }
