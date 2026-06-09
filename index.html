@@ -808,6 +808,513 @@ footer {
 .d2 { transition-delay: 0.2s; }
 .d3 { transition-delay: 0.3s; }
 
+/* ── METODOLOGÍA ───────────────────────── */
+#metodologia  { background: var(--cream); }
+#planificacion{ background: var(--white); }
+#equipo       { background: var(--cream); }
+
+.met-intro {
+  font-size: 15px;
+  color: var(--mid);
+  line-height: 1.7;
+  max-width: 580px;
+  margin-top: 16px;
+}
+
+/* cabecera de metodología en dos columnas: encabezado+texto / tarjeta */
+.met-top {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 72px;
+  align-items: start;
+}
+.met-top-left { display: flex; flex-direction: column; }
+.met-body-text { margin-top: 40px; }
+.met-body-text p {
+  font-size: 15px;
+  color: var(--mid);
+  line-height: 1.7;
+  margin-bottom: 22px;
+}
+.met-body-text p:last-child { margin-bottom: 0; }
+.met-body-text p strong { color: var(--ink); font-weight: 600; }
+
+/* tarjeta del ciclo iterativo Métrica v3 × SCRUM */
+.met-cycle {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+}
+.met-cycle h4 {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 24px;
+}
+.cycle-combo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.cycle-combo .cc-tag {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  font-style: italic;
+  color: var(--navy);
+  line-height: 1;
+}
+.cycle-combo .cc-x { color: var(--coral); font-size: 16px; }
+.cycle-combo .cc-tag.blue { color: var(--blue); }
+.cycle-steps { display: flex; flex-direction: column; gap: 0; }
+.cycle-step {
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+.cycle-step:first-child { border-top: 1px solid var(--border); }
+.cycle-step .cs-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--blue); flex-shrink: 0;
+  transform: translateY(-1px);
+}
+.cycle-step .cs-text { font-size: 12px; color: var(--mid); line-height: 1.5; }
+.cycle-step .cs-text strong { color: var(--navy); font-weight: 700; display: block; }
+
+/* 5 líneas de actuación en franja numerada */
+.met-lines {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border-top: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+}
+.met-line {
+  padding: 24px 22px 28px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.met-line .ml-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 26px;
+  font-style: italic;
+  color: var(--coral);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+.met-line h3 {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--navy);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+.met-line p { font-size: 12px; color: var(--mid); line-height: 1.55; }
+
+/* seguimiento semanal / mensual */
+.met-track {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.track-card {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 28px 28px 24px;
+  background: var(--white);
+}
+.track-card .tc-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+.track-card .tc-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--navy);
+  letter-spacing: -0.01em;
+}
+.track-card .tc-cad {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blue);
+  padding: 4px 10px;
+  border: 1px solid rgba(18,70,255,0.25);
+  background: #EEF3FF;
+  border-radius: 100px;
+}
+.track-card ul { list-style: none; display: flex; flex-direction: column; gap: 0; }
+.track-card li {
+  font-size: 12.5px;
+  color: var(--mid);
+  line-height: 1.5;
+  padding: 10px 0 10px 16px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.track-card li:last-child { border-bottom: none; }
+.track-card li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 17px;
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--mid);
+}
+
+/* ── PLANIFICACIÓN ─────────────────────── */
+.plan-intro {
+  font-size: 15px;
+  color: var(--mid);
+  line-height: 1.7;
+  max-width: 580px;
+  margin-top: 16px;
+  margin-bottom: 48px;
+}
+
+/* Gantt */
+.gantt {
+  border: 1px solid var(--border);
+  background: var(--white);
+  border-radius: 12px;
+  padding: 28px 32px 24px;
+  overflow-x: auto;
+}
+.gantt-head {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  align-items: end;
+  margin-bottom: 14px;
+}
+.gantt-head .gh-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mid);
+}
+.gantt-months {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+.gantt-months .gm {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ABABAB;
+  text-align: center;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+}
+.gantt-row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  align-items: center;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--border);
+}
+.gantt-row:last-child { border-bottom: none; }
+.gantt-row .gr-label {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.gantt-row .gr-code {
+  font-family: monospace;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--coral);
+}
+.gantt-row .gr-name {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--navy);
+}
+.gantt-track {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  height: 22px;
+  background-image: linear-gradient(to right, var(--border) 1px, transparent 1px);
+  background-size: 25% 100%;
+}
+.gantt-bar {
+  grid-row: 1;
+  height: 100%;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+.gantt-bar.coral { background: var(--coral); }
+.gantt-bar.blue  { background: var(--blue); }
+.gantt-bar.sage  { background: var(--sage); }
+.gantt-bar.navy  { background: var(--navy); }
+.gantt-bar.teal  { background: #2A8C9E; }
+
+.gantt-foot {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: flex-end;
+}
+.gantt-foot .gf-dur {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--navy);
+}
+.gantt-foot .gf-dur em { font-style: normal; color: var(--blue); }
+
+/* detalle de hitos */
+.hito-list {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-top: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+}
+.hito-card {
+  padding: 28px 28px 30px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.hito-card.span2 { grid-column: 1 / -1; }
+.hito-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.hito-code {
+  font-family: monospace;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--white);
+  background: var(--navy);
+  padding: 4px 9px;
+  border-radius: 5px;
+}
+.hito-card h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--navy);
+  letter-spacing: -0.01em;
+}
+.hito-card .hito-obj {
+  font-size: 13px;
+  color: var(--mid);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+.hito-tasks { display: flex; flex-wrap: wrap; gap: 6px; }
+.hito-tasks span {
+  font-size: 11px;
+  color: var(--ink);
+  padding: 4px 11px;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  background: var(--white);
+  line-height: 1.3;
+}
+
+/* entregables */
+.entregables {
+  margin-top: 56px;
+}
+.entregables h4 {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 24px;
+}
+.ent-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+}
+.ent-item {
+  padding: 22px 22px 26px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.ent-code {
+  font-family: 'DM Serif Display', serif;
+  font-size: 13px;
+  font-style: italic;
+  color: var(--blue);
+  margin-bottom: 12px;
+}
+.ent-item .ent-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+.ent-item .ent-desc {
+  font-size: 12px;
+  color: var(--mid);
+  line-height: 1.5;
+}
+
+/* ── EQUIPO ────────────────────────────── */
+.team-intro {
+  font-size: 15px;
+  color: var(--mid);
+  line-height: 1.7;
+  max-width: 580px;
+  margin-top: 16px;
+  margin-bottom: 48px;
+}
+.team-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+}
+.team-card {
+  padding: 32px 32px 34px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.team-role {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 16px;
+}
+.team-role .tr-marker {
+  width: 24px; height: 2px; background: var(--coral);
+}
+.team-card h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 26px;
+  color: var(--navy);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 18px;
+}
+.team-card ul { list-style: none; display: flex; flex-direction: column; gap: 0; }
+.team-card li {
+  font-size: 12.5px;
+  color: var(--mid);
+  line-height: 1.5;
+  padding: 10px 0 10px 16px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.team-card li:first-child { border-top: 1px solid var(--border); }
+.team-card li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 17px;
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--mid);
+}
+
+/* gráfico circular del ciclo de sprint */
+.met-loop { width: 100%; display: block; margin-top: 4px; }
+.met-loop svg { width: 100%; max-width: 300px; height: auto; display: block; margin: 0 auto; }
+.met-loop-cap {
+  font-size: 11px;
+  color: var(--mid);
+  line-height: 1.5;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* matriz de participación del equipo */
+.team-matrix { margin-top: 56px; }
+.team-matrix h4 {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 24px;
+}
+.tm-grid {
+  display: grid;
+  grid-template-columns: 230px repeat(5, 1fr);
+  border-top: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+}
+.tm-cell {
+  padding: 15px 12px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+}
+.tm-cell.head {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--mid);
+  text-align: center;
+  line-height: 1.3;
+}
+.tm-cell.rowlabel {
+  justify-content: flex-start;
+  gap: 11px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--navy);
+}
+.tm-rowmark { width: 18px; height: 2px; flex-shrink: 0; }
+.tm-dot { width: 15px; height: 15px; border-radius: 50%; }
+.tm-dot.part { border: 1.6px solid #C3BEB4; background: transparent; }
+.tm-legend {
+  display: flex;
+  gap: 28px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+.tm-legend span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--mid);
+}
+.tm-legend .lg-dot { width: 13px; height: 13px; border-radius: 50%; }
+.tm-legend .lg-dot.lead { background: var(--navy); }
+.tm-legend .lg-dot.part { border: 1.6px solid #C3BEB4; }
+
 @media (min-width: 2400px) {
   html {
     zoom: 1.25;
@@ -890,6 +1397,20 @@ footer {
   .tab-panel.active { grid-template-columns: 1fr; }
   .seg-header { grid-template-columns: 1fr; gap: 16px; }
   .seg-grid { grid-template-columns: 1fr 1fr; }
+  .met-top { grid-template-columns: 1fr; gap: 32px; }
+  .met-cycle { margin-top: 0; }
+  .met-lines { grid-template-columns: 1fr 1fr; }
+  .met-track { grid-template-columns: 1fr; }
+  .gantt { padding: 20px; }
+  .gantt-head, .gantt-row { grid-template-columns: 120px 1fr; }
+  .gantt-row .gr-name { font-size: 11px; }
+  .hito-list { grid-template-columns: 1fr; }
+  .ent-grid { grid-template-columns: 1fr 1fr; }
+  .team-grid { grid-template-columns: 1fr; }
+  .team-matrix { overflow-x: auto; }
+  .tm-grid { grid-template-columns: 130px repeat(5, 1fr); min-width: 440px; }
+  .tm-cell { padding: 12px 6px; min-height: 44px; }
+  .tm-cell.rowlabel { font-size: 11px; gap: 7px; }
   footer { flex-direction: column; gap: 12px; text-align: center; }
 }
 </style>
@@ -906,7 +1427,9 @@ footer {
     <li><a href="#propuesta">Propuesta</a></li>
     <li><a href="#arquitectura">Arquitectura</a></li>
     <li><a href="#modulos">Módulos</a></li>
-    <li><a href="#seguridad">Seguridad</a></li>
+    <li><a href="#metodologia">Metodología</a></li>
+    <li><a href="#planificacion">Planificación</a></li>
+    <li><a href="#equipo">Equipo</a></li>
   </ul>
   <div class="nav-client">
     <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Logotipo_del_Ministerio_de_Vivienda_y_Agenda_Urbana.svg" alt="MIVAU" height="32" style="display:block; object-fit:contain;">
@@ -1427,6 +1950,371 @@ footer {
       <div class="sp-marker navy"></div>
       <div class="sp-title">Tratamiento exclusivo para la PoC</div>
       <div class="sp-desc">Ningún dato será utilizado fuera del ámbito estrictamente definido en el contrato.</div>
+    </div>
+  </div>
+</section>
+
+<!-- METODOLOGÍA -->
+<section id="metodologia" class="section">
+  <div class="met-top">
+    <div class="met-top-left">
+      <div class="sec-num"><span class="n">06</span> Metodología</div>
+      <h2 class="sec-h">Métrica v3 con alma<br><em>ágil</em></h2>
+      <p class="met-intro">Combinamos el rigor por etapas de Métrica v3 con la cadencia iterativa de SCRUM. El resultado: resultados progresivos que agilizan la visión de los avances y permiten identificar riesgos en tiempo y forma.</p>
+
+      <div class="met-body-text reveal">
+        <p>Hemos ejecutado proyectos combinando <strong>Métrica v3</strong> y <strong>SCRUM</strong>, interpretando las fortalezas de cada una. Proponemos seguir las etapas de Métrica v3 y complementarlas con la filosofía ágil para disponer de resultados en un proceso iterativo y progresivo.</p>
+        <p>Esto permite anticipar la visión de los resultados, garantizarlos en las fechas acordadas y, sobre todo, <strong>identificar riesgos a tiempo</strong> para aplicar medidas correctoras antes de que afecten a la planificación.</p>
+      </div>
+    </div>
+
+    <div class="met-cycle reveal d1">
+      <h4>Ciclo de sprint</h4>
+      <div class="cycle-combo">
+        <span class="cc-tag">Métrica v3</span>
+        <span class="cc-x">×</span>
+        <span class="cc-tag blue">SCRUM</span>
+      </div>
+      <div class="met-loop">
+        <svg viewBox="0 0 320 300" role="img" aria-label="Ciclo iterativo de sprint">
+          <defs>
+            <marker id="loopArr" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
+              <path d="M0,0 L10,5 L0,10 z" fill="#6B6B6B"></path>
+            </marker>
+          </defs>
+
+          <!-- arcos del ciclo (sentido horario) -->
+          <g fill="none" stroke="#6B6B6B" stroke-width="1.6" marker-end="url(#loopArr)">
+            <path d="M194.5,64.7 A92 92 0 0 1 245.3,115.5"></path>
+            <path d="M245.3,184.5 A92 92 0 0 1 194.5,235.3"></path>
+            <path d="M125.5,235.3 A92 92 0 0 1 74.7,184.5"></path>
+            <path d="M74.7,115.5 A92 92 0 0 1 125.5,64.7"></path>
+          </g>
+
+          <!-- centro -->
+          <text x="160" y="146" text-anchor="middle" font-family="'DM Serif Display',serif" font-size="17" font-style="italic" fill="#0A1628">Sprint</text>
+          <text x="160" y="162" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="8.5" letter-spacing="0.12em" fill="#6B6B6B">ITERATIVO</text>
+
+          <!-- nodos -->
+          <g font-family="Inter,system-ui,sans-serif" font-size="9.5" font-weight="700" text-anchor="middle">
+            <circle cx="160" cy="58"  r="33" fill="#FAFAF7" stroke="#1246FF" stroke-width="2"></circle>
+            <text x="160" y="61.5" fill="#1246FF">Planificar</text>
+
+            <circle cx="252" cy="150" r="33" fill="#FAFAF7" stroke="#3D6B5B" stroke-width="2"></circle>
+            <text x="252" y="153.5" fill="#3D6B5B">Desarrollar</text>
+
+            <circle cx="160" cy="242" r="33" fill="#FAFAF7" stroke="#FF4D2E" stroke-width="2"></circle>
+            <text x="160" y="245.5" fill="#FF4D2E">Validar</text>
+
+            <circle cx="68"  cy="150" r="33" fill="#FAFAF7" stroke="#0A1628" stroke-width="2"></circle>
+            <text x="68"  y="153.5" fill="#0A1628">Revisar</text>
+          </g>
+        </svg>
+      </div>
+      <p class="met-loop-cap">Cada sprint repite el ciclo; el seguimiento revisa el avance e identifica riesgos.</p>
+    </div>
+  </div>
+
+  <div class="met-lines">
+    <div class="met-line reveal">
+      <div class="ml-num">1</div>
+      <h3>Análisis y ajuste de requisitos</h3>
+      <p>Revisión de requisitos funcionales y técnicos de la PoC para identificar mejoras y definir ajustes.</p>
+    </div>
+    <div class="met-line reveal d1">
+      <div class="ml-num">2</div>
+      <h3>Diseño de la arquitectura</h3>
+      <p>Diseño técnico de la solución IA, optimizando los flujos de extracción mediante lenguaje natural.</p>
+    </div>
+    <div class="met-line reveal d2">
+      <div class="ml-num">3</div>
+      <h3>Desarrollo y configuración</h3>
+      <p>Desarrollo del código y parametrización de los componentes de IA para la extracción automática o asistida.</p>
+    </div>
+    <div class="met-line reveal d3">
+      <div class="ml-num">4</div>
+      <h3>Pruebas y validación</h3>
+      <p>Pruebas técnicas y funcionales para validar el funcionamiento y la calidad de los resultados generados.</p>
+    </div>
+    <div class="met-line reveal d3">
+      <div class="ml-num">5</div>
+      <h3>Documentación y transferencia</h3>
+      <p>Documentación técnica para el mantenimiento futuro y transferencia de conocimiento al personal del organismo.</p>
+    </div>
+  </div>
+
+  <div class="met-track">
+    <div class="track-card reveal">
+      <div class="tc-head">
+        <span class="tc-title">Seguimiento semanal</span>
+        <span class="tc-cad">Semanal</span>
+      </div>
+      <ul>
+        <li>Reuniones con los responsables del MIVAU para debatir soluciones a cualquier problema en curso.</li>
+        <li>Validación del encaje de las propuestas del equipo de desarrollo con el negocio.</li>
+        <li>Identificación temprana de riesgos para resolverlos sin comprometer las tareas del periodo.</li>
+      </ul>
+    </div>
+    <div class="track-card reveal d1">
+      <div class="tc-head">
+        <span class="tc-title">Seguimiento mensual</span>
+        <span class="tc-cad">Por sprint</span>
+      </div>
+      <ul>
+        <li>Presentación de la evolución del periodo: tareas realizadas, avance de hitos y retos siguientes.</li>
+        <li>Revisión global con tablas y gráficos para una lectura visual de la situación del proyecto.</li>
+        <li>Planificación de capacidades del equipo y continuidad de tareas, recogido en un informe por sprint.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PLANIFICACIÓN -->
+<section id="planificacion" class="section">
+  <div class="sec-num"><span class="n">07</span> Planificación</div>
+  <h2 class="sec-h">Cinco hitos,<br>una hoja de ruta <em>ordenada</em></h2>
+  <p class="plan-intro">La hoja de ruta detalla alcance, entregables, plazos y responsabilidades. Las actividades del pliego se identifican con precisión en cada fase planificada para un desarrollo ordenado y eficiente.</p>
+
+  <div class="gantt reveal">
+    <div class="gantt-head">
+      <span class="gh-label">Hito / Fase</span>
+      <div class="gantt-months">
+        <span class="gm">Mes 1</span>
+        <span class="gm">Mes 2</span>
+        <span class="gm">Mes 3</span>
+        <span class="gm">Mes 4</span>
+      </div>
+    </div>
+
+    <div class="gantt-row">
+      <div class="gr-label"><span class="gr-code">H1</span><span class="gr-name">Inicio y definición funcional</span></div>
+      <div class="gantt-track">
+        <div class="gantt-bar blue" style="grid-column: 1 / 4;">Definición</div>
+      </div>
+    </div>
+    <div class="gantt-row">
+      <div class="gr-label"><span class="gr-code">H2</span><span class="gr-name">Diseño funcional y técnico</span></div>
+      <div class="gantt-track">
+        <div class="gantt-bar sage" style="grid-column: 4 / 9;">Diseño</div>
+      </div>
+    </div>
+    <div class="gantt-row">
+      <div class="gr-label"><span class="gr-code">H3</span><span class="gr-name">Desarrollo de la PoC</span></div>
+      <div class="gantt-track">
+        <div class="gantt-bar navy" style="grid-column: 6 / 14;">Construcción e integración</div>
+      </div>
+    </div>
+    <div class="gantt-row">
+      <div class="gr-label"><span class="gr-code">H4</span><span class="gr-name">Pruebas y validación</span></div>
+      <div class="gantt-track">
+        <div class="gantt-bar coral" style="grid-column: 11 / 16;">Validación</div>
+      </div>
+    </div>
+    <div class="gantt-row">
+      <div class="gr-label"><span class="gr-code">H5</span><span class="gr-name">Cierre y transferencia</span></div>
+      <div class="gantt-track">
+        <div class="gantt-bar teal" style="grid-column: 13 / 17;">Entrega</div>
+      </div>
+    </div>
+
+    <div class="gantt-foot">
+      <span class="gf-dur">Duración total: <em>4 meses</em> · 16 semanas</span>
+    </div>
+  </div>
+
+  <div class="hito-list">
+    <div class="hito-card reveal">
+      <div class="hito-top"><span class="hito-code">HITO 1</span><h3>Inicio y definición funcional</h3></div>
+      <p class="hito-obj">Definir el alcance funcional y técnico de la PoC, así como la planificación general del proyecto.</p>
+      <div class="hito-tasks">
+        <span>Reunión de lanzamiento</span>
+        <span>Análisis de requisitos</span>
+        <span>Documentos y campos objetivo</span>
+        <span>Criterios de validación</span>
+        <span>Arquitectura preliminar</span>
+        <span>Cronograma</span>
+      </div>
+    </div>
+    <div class="hito-card reveal d1">
+      <div class="hito-top"><span class="hito-code">HITO 2</span><h3>Diseño funcional y técnico</h3></div>
+      <p class="hito-obj">Definir la solución funcional y técnica de la PoC en detalle.</p>
+      <div class="hito-tasks">
+        <span>Diseño UX/UI</span>
+        <span>Flujos de usuario</span>
+        <span>Diseño técnico de módulos</span>
+        <span>Definición de APIs</span>
+        <span>Modelo de persistencia y trazabilidad</span>
+        <span>Estrategias NLP</span>
+      </div>
+    </div>
+    <div class="hito-card span2 reveal">
+      <div class="hito-top"><span class="hito-code">HITO 3</span><h3>Desarrollo de la PoC</h3></div>
+      <p class="hito-obj">Construir e integrar los distintos módulos de la solución.</p>
+      <div class="hito-tasks">
+        <span>Ingesta documental</span>
+        <span>Extracción de texto y OCR</span>
+        <span>Pipeline NLP y LLM</span>
+        <span>Embeddings y búsqueda semántica</span>
+        <span>Módulo RAG y chat documental</span>
+        <span>APIs REST</span>
+        <span>Interfaz de consulta y validación</span>
+        <span>Persistencia PostgreSQL + pgvector</span>
+      </div>
+    </div>
+    <div class="hito-card reveal">
+      <div class="hito-top"><span class="hito-code">HITO 4</span><h3>Pruebas y validación</h3></div>
+      <p class="hito-obj">Validar el funcionamiento de la PoC sobre la muestra documental definida.</p>
+      <div class="hito-tasks">
+        <span>Pruebas unitarias e integración</span>
+        <span>Validación de extracción</span>
+        <span>Refinamiento de prompts</span>
+        <span>Trazabilidad y consistencia</span>
+        <span>Validación RAG</span>
+        <span>Incidencias y correcciones</span>
+      </div>
+    </div>
+    <div class="hito-card reveal d1">
+      <div class="hito-top"><span class="hito-code">HITO 5</span><h3>Cierre y transferencia</h3></div>
+      <p class="hito-obj">Formalizar la entrega de la PoC y realizar la transferencia de conocimiento.</p>
+      <div class="hito-tasks">
+        <span>Guía de usuario</span>
+        <span>Demo</span>
+        <span>Sesiones de transferencia</span>
+        <span>Entrega de código, documentación y resultados</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="entregables reveal">
+    <h4>Entregables del servicio</h4>
+    <div class="ent-grid">
+      <div class="ent-item">
+        <div class="ent-code">E1</div>
+        <div class="ent-title">Planificación del proyecto</div>
+        <div class="ent-desc">Planificación, documentación de toma de requisitos y diseño de la arquitectura.</div>
+      </div>
+      <div class="ent-item">
+        <div class="ent-code">E2</div>
+        <div class="ent-title">Especificaciones funcionales y técnicas</div>
+        <div class="ent-desc">Documentación funcional, diseño UX, diseño técnico y modelo de datos.</div>
+      </div>
+      <div class="ent-item">
+        <div class="ent-code">E3</div>
+        <div class="ent-title">Plan de pruebas</div>
+        <div class="ent-desc">Documentación de pruebas unitarias y plan de pruebas completo.</div>
+      </div>
+      <div class="ent-item">
+        <div class="ent-code">E4</div>
+        <div class="ent-title">Repositorio con código fuente</div>
+        <div class="ent-desc">Código fuente de la solución.</div>
+      </div>
+      <div class="ent-item">
+        <div class="ent-code">E5</div>
+        <div class="ent-title">Documentación de transferencia</div>
+        <div class="ent-desc">Guía de usuario y documentación de transferencia de conocimiento.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPO -->
+<section id="equipo" class="section">
+  <div class="sec-num"><span class="n">08</span> Equipo</div>
+  <h2 class="sec-h">Perfiles con experiencia<br>en <em>IA aplicada</em></h2>
+  <p class="team-intro">Un equipo con experiencia en inteligencia artificial, procesamiento de lenguaje natural y sistemas basados en modelos de lenguaje, capaz de abordar cada fase del proyecto, desde la definición técnica hasta el desarrollo y la validación.</p>
+
+  <div class="team-grid">
+    <div class="team-card reveal">
+      <div class="team-role"><span class="tr-marker"></span>Coordinación</div>
+      <h3>Coordinador del proyecto</h3>
+      <ul>
+        <li>Coordinación general del proyecto.</li>
+        <li>Seguimiento del cronograma y gestión de hitos.</li>
+        <li>Interlocución con el responsable del contrato.</li>
+        <li>Supervisión de la calidad de los entregables.</li>
+        <li>Apoyo en la definición estratégica y técnica.</li>
+      </ul>
+    </div>
+    <div class="team-card reveal d1">
+      <div class="team-role"><span class="tr-marker" style="background:var(--blue)"></span>Inteligencia artificial</div>
+      <h3>Científico de datos senior</h3>
+      <ul>
+        <li>Diseño de la arquitectura técnica de la solución.</li>
+        <li>Pipeline de generación basado en modelos de lenguaje.</li>
+        <li>Mecanismos de recuperación de información (RAG).</li>
+        <li>Desarrollo y ajuste de flujos de NLP.</li>
+        <li>Supervisión técnica de los desarrollos.</li>
+      </ul>
+    </div>
+    <div class="team-card reveal">
+      <div class="team-role"><span class="tr-marker" style="background:var(--sage)"></span>Experiencia de usuario</div>
+      <h3>Diseño UX/UI</h3>
+      <ul>
+        <li>Diseño de interfaces y experiencia de usuario.</li>
+        <li>Flujos de navegación y arquitectura visual.</li>
+        <li>Prototipos y mockups funcionales.</li>
+        <li>Usabilidad, accesibilidad y coherencia visual.</li>
+      </ul>
+    </div>
+    <div class="team-card reveal d1">
+      <div class="team-role"><span class="tr-marker" style="background:var(--navy)"></span>Desarrollo</div>
+      <h3>Programador senior front</h3>
+      <ul>
+        <li>Desarrollo de la interfaz frontend de la solución.</li>
+        <li>Implementación de componentes y funcionalidades.</li>
+        <li>Integración con APIs y servicios backend.</li>
+        <li>Buenas prácticas y estándares de calidad.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="team-matrix reveal">
+    <h4>Participación por fase del proyecto</h4>
+    <div class="tm-grid">
+      <!-- cabecera -->
+      <div class="tm-cell head" style="justify-content:flex-start; text-align:left;">Perfil · Fase</div>
+      <div class="tm-cell head">Inicio</div>
+      <div class="tm-cell head">Diseño</div>
+      <div class="tm-cell head">Desarrollo</div>
+      <div class="tm-cell head">Pruebas</div>
+      <div class="tm-cell head">Cierre</div>
+
+      <!-- Coordinador -->
+      <div class="tm-cell rowlabel"><span class="tm-rowmark" style="background:var(--coral)"></span>Coordinador</div>
+      <div class="tm-cell"><span class="tm-dot" style="background:var(--coral)"></span></div>
+      <div class="tm-cell"><span class="tm-dot part"></span></div>
+      <div class="tm-cell"><span class="tm-dot part"></span></div>
+      <div class="tm-cell"><span class="tm-dot part"></span></div>
+      <div class="tm-cell"><span class="tm-dot" style="background:var(--coral)"></span></div>
+
+      <!-- Científico de datos -->
+      <div class="tm-cell rowlabel"><span class="tm-rowmark" style="background:var(--blue)"></span>Científico de datos</div>
+      <div class="tm-cell"><span class="tm-dot part"></span></div>
+      <div class="tm-cell"><span class="tm-dot" style="background:var(--blue)"></span></div>
+      <div class="tm-cell"><span class="tm-dot" style="background:var(--blue)"></span></div>
+      <div class="tm-cell"><span class="tm-dot part"></span></div>
+      <div class="tm-cell"><span class="tm-dot part"></span></div>
+
+      <!-- Diseño UX/UI -->
+      <div class="tm-cell rowlabel"><span class="tm-rowmark" style="background:var(--sage)"></span>Diseño UX/UI</div>
+      <div class="tm-cell"><span class="tm-dot part"></span></div>
+      <div class="tm-cell"><span class="tm-dot" style="background:var(--sage)"></span></div>
+      <div class="tm-cell"><span class="tm-dot part"></span></div>
+      <div class="tm-cell"></div>
+      <div class="tm-cell"></div>
+
+      <!-- Programador senior front -->
+      <div class="tm-cell rowlabel"><span class="tm-rowmark" style="background:var(--navy)"></span>Programador front</div>
+      <div class="tm-cell"></div>
+      <div class="tm-cell"><span class="tm-dot part"></span></div>
+      <div class="tm-cell"><span class="tm-dot" style="background:var(--navy)"></span></div>
+      <div class="tm-cell"><span class="tm-dot" style="background:var(--navy)"></span></div>
+      <div class="tm-cell"><span class="tm-dot part"></span></div>
+    </div>
+
+    <div class="tm-legend">
+      <span><span class="lg-dot lead"></span> Responsable principal</span>
+      <span><span class="lg-dot part"></span> Participa / apoya</span>
     </div>
   </div>
 </section>
